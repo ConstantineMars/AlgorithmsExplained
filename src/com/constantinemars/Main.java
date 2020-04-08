@@ -9,6 +9,7 @@ public class Main {
         print("input", a);
         print("bubbleSort", bubbleSort(a));
         print("selectionSort", selectionSort(a));
+        print("insertionSort", insertionSort(a));
     }
 
     private static void print(String label, int[] a) {
@@ -17,6 +18,30 @@ public class Main {
             System.out.printf("%d ", v);
         }
         System.out.println();
+    }
+
+    private static int[] insertionSort(int[] a) {
+        int checks = 0;
+        int swaps = 0;
+
+        for(int i=0; i<a.length; i++) {
+            int current = a[i];
+            int j = i-1;
+
+            checks++;
+            while(j >= 0 && a[j] > current) {
+                swaps++;
+                a[j+1] = a[j];
+                j--;
+            }
+
+            swaps++;
+            a[j+1] = current;
+        }
+
+        System.out.printf("insertionSort: checks:%d, swaps:%d\n", checks, swaps);
+
+        return a;
     }
 
     private static int[] selectionSort(int[] a) {
